@@ -2,12 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Python') {
+        stage ('SCM') {
             steps {
-                python3 hello.py
+                git branch: 'main', url: 'https://github.com/pythoncpp/jenkins-html-demo.git'
             }
         }
-
-        // Add more stages as needed
+        stage ('python file') {
+            steps {
+                sh 'python3 hello.py'
+            }
+        }
     }
 }
